@@ -12,17 +12,41 @@ $minWidthTablets: 768;
 $maxWidth: 1440;
 $maxWidthContainer: 1110;
 
+// Обнуляем body
+body {
+    margin: 0 auto;
+}
+
+// Основной wrapper-оболочка
 .wrapper {
     width: 100%;
     min-height: 100%;
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    margin: 0 auto;
 }
 
+// Основная сетка
 ._container {
     max-width: $maxWidthContainer + px;
     margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @media (max-width: $minWidthTablets + px) {
+        max-width: 768px;
+    }
+    @media (max-width: $minWidthPhones + px) {
+        max-width: 320px;
+    }
+}
+.nav_container {
+    max-width: $maxWidthContainer + px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     @media (max-width: $minWidthTablets + px) {
         max-width: 768px;
     }
@@ -31,9 +55,69 @@ $maxWidthContainer: 1110;
     }
 }
 
+// Стили для _header.html
 .header {
     &_content {
         max-width: $maxWidthContainer + px;
         font-family: $fontFamily;
+        min-height: 70px;
+        &_svg {
+            max-width: 254px;
+            max-height: 43px;
+        }
+    }
+    &_span {
+        max-width: 200px;
+    }
+    &_contact {
+        display: flex;
+        align-items: center;
+        &_svg:nth-child(1) {
+            max-width: 15px;
+            max-height: 23px;
+            margin-right: 15px;
+        }
+        &_svg:nth-child(2) {
+            max-width: 21px;
+            max-height: 19px;
+            margin-right: 9px;
+        }
+    }
+    &_icons {
+        display: flex;
+        &_svg {
+            max-width: 32px;
+            max-height: 32px;
+            margin-right: 33px;
+        }
+        &_svg:nth-child(3) {
+            margin-right: 0;
+        }
+    }
+    &_nav {
+        min-width: $maxWidthContainer + px;
+        max-height: 49px;
+        background-color: #F0F0F0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &_list {
+            display: flex;
+            justify-content: space-between;
+            padding: 0;
+            width: 100%;
+            font-family: $fontFamily;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18.0488px;
+            ._link {
+                list-style: none;
+                padding: 2px 1px 1px 1px;
+            }
+            .__link {
+                text-decoration: none;
+                color: #000000;
+            }
+        }
     }
 }
