@@ -101,7 +101,7 @@ body {
             top: 17px;
         }
         &_box {
-            display: block;
+            display: flex;
             position: fixed;
             visibility: hidden;
             top: 0;
@@ -113,7 +113,6 @@ body {
             list-style: none;
             background-color: #FFFFFF;
             transition-duration: .3s;
-            display: flex;
             .__header-768 {
                 display: flex;
                 flex-direction: column;
@@ -143,6 +142,7 @@ body {
                 .__box_svg { width: 28px; height: 28px; margin-right: 18px; }
                 .__box_svg:nth-child(3) { margin-right: 0; }
             }
+            .__li_box { margin-top: 0; }
         }
         &_item {
             display: block;
@@ -160,6 +160,17 @@ body {
             background-color: #00793A;
         }
     }
+    @media (max-width: $minWidthPhones + px) {
+        max-width: 320px;
+        display: block;
+        &_box {
+            flex-direction: column;
+            .__li_box {
+                margin-top: 50px;
+                .burger_menu_item { padding: 0 0 30px 9px; }
+            }
+        }
+    }
 }
 
 // Стили для _header.html
@@ -170,6 +181,9 @@ body {
         min-height: 70px;
         @media (max-width: $minWidthTablets + px) {
             padding: 24px 0 23px 9px;
+        }
+        @media (max-width: $minWidthPhones + px) {
+            padding: 10px 16px;
         }
         &_svg {
             max-width: 254px;
