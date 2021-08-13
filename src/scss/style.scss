@@ -7,10 +7,12 @@
 // Переменные scss
 $fontFamily: "Roboto";
 $fontFamilyOsw: "Oswald";
+$maxWidth: 1440;
+$minWidth: 320;
+$maxWidthContainer: 1110;
+$md1: $maxWidthContainer + 12;
 $minWidthPhones: 320;
 $minWidthTablets: 768;
-$maxWidth: 1440;
-$maxWidthContainer: 1110;
 
 // Обнуляем body
 body {
@@ -36,22 +38,127 @@ body {
     justify-content: space-between;
     @media (max-width: $minWidthTablets + px) {
         max-width: 768px;
+        .header_span { display: none; }
+        .header_contacts { display: none; }
+        .header_icons { display: none; }
     }
     @media (max-width: $minWidthPhones + px) {
         max-width: 320px;
     }
 }
+// Навигационный блок меню в _header.html
 .nav_container {
-    max-width: $maxWidthContainer + px;
+    max-width: $maxWidth + px;
     margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     @media (max-width: $minWidthTablets + px) {
         max-width: 768px;
+        display: none;
     }
     @media (max-width: $minWidthPhones + px) {
         max-width: 320px;
+        display: none;
+    }
+}
+// Бургер, появляющийся при смене ширины страницы
+.burger_menu {
+    display: none;
+    @media (max-width: $minWidthTablets + px) {
+        max-width: 768px;
+        display: block;
+        #burger_menu_toggle { opacity: 0; }
+        #burger_menu_toggle:checked ~ &_btn > span { transform: rotate(45deg); }
+        #burger_menu_toggle:checked ~ &_btn > span::before { transform: rotate(0); top: 0; }
+        #burger_menu_toggle:checked ~ &_btn > span::after { transform: rotate(90deg); top: 0; }
+        #burger_menu_toggle:checked ~ &_box { visibility: visible; left: 0; }
+        &_btn {
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            z-index: 5;
+            display: block;
+            position: absolute;
+            top: 42px;
+            right: 10px;
+            width: 45px;
+            height: 41px;
+        }
+        &_btn > span,
+        &_btn > span::before,
+        &_btn > span::after {
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 7px;
+            background-color: #00793A;
+            transition-duration: .3s;
+        }
+        &_btn > span::before {
+            content: '';
+            top: -17px;
+        }
+        &_btn > span::after {
+            content: '';
+            top: 17px;
+        }
+        &_box {
+            display: block;
+            position: fixed;
+            visibility: hidden;
+            top: 0;
+            left: -100%;
+            width: 760px;
+            height: 100%;
+            margin: 0;
+            padding: 80px 0;
+            list-style: none;
+            background-color: #FFFFFF;
+            transition-duration: .3s;
+            display: flex;
+            .__header-768 {
+                display: flex;
+                flex-direction: column;
+                padding-left: 9px;
+                min-width: 360px;
+                .__car_svg {
+                    margin-bottom: 14px;
+                }
+                .__box_span { 
+                    margin-bottom: 30px;
+                    min-width: 268px;
+                    font-family: $fontFamily;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 18px;
+                }
+                .header_contact {
+                    margin-bottom: 14px;
+                    .__box_span_sec { 
+                        font-family: $fontFamily;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 18px;
+                    }
+                }
+                .header_contact:nth-child(2) { margin-bottom: 20px; }
+                .__box_svg { width: 28px; height: 28px; margin-right: 18px; }
+                .__box_svg:nth-child(3) { margin-right: 0; }
+            }
+        }
+        &_item {
+            display: block;
+            padding: 12px 24px;
+            font-family: $fontFamilyOsw;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 26px;
+            line-height: 39px;
+            color: #000000;
+            text-decoration: none;
+            transition-duration: .3s;
+        }
+        &_item:hover {
+            background-color: #00793A;
+        }
     }
 }
 
@@ -61,6 +168,9 @@ body {
         max-width: $maxWidthContainer + px;
         font-family: $fontFamily;
         min-height: 70px;
+        @media (max-width: $minWidthTablets + px) {
+            padding: 24px 0 23px 9px;
+        }
         &_svg {
             max-width: 254px;
             max-height: 43px;
@@ -95,21 +205,22 @@ body {
         }
     }
     &_nav {
-        min-width: $maxWidthContainer + px;
+        max-width: $maxWidth + px;
         max-height: 49px;
         background-color: #F0F0F0;
         display: flex;
         justify-content: center;
         align-items: center;
         &_list {
+            width: 100%;
             display: flex;
             justify-content: space-between;
             padding: 0;
-            width: 100%;
             font-family: $fontFamily;
             font-style: normal;
             font-weight: normal;
             font-size: 18.0488px;
+            max-width: $maxWidthContainer + px;
             ._link {
                 list-style: none;
                 padding: 2px 1px 1px 1px;
