@@ -51,6 +51,7 @@ body {
   max-width: 1110px;
   font-family: "Roboto";
   min-height: 70px;
+  padding: 0 10px 0 10px;
 }
 
 .header_content_svg {
@@ -112,6 +113,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 0 10px 0 10px;
 }
 
 .header_nav_list {
@@ -138,6 +140,67 @@ body {
 .header_nav_list .__link {
   text-decoration: none;
   color: #000000;
+}
+
+.main {
+  max-width: 1440px;
+  background: no-repeat url("../img/bg.png");
+  background-position: top right;
+}
+
+.main_bg {
+  min-width: 1440px;
+  background: no-repeat url("../img/bgp2.png");
+  background-position: top left;
+}
+
+.main_content {
+  min-width: 780px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.main_title {
+  font-family: "Oswald";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 42px;
+  line-height: 50px;
+  color: #FFFFFF;
+  margin: 60px 0 40px 0;
+  max-width: 540px;
+}
+
+.main_set {
+  min-width: 1110px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.main_btn {
+  width: 160px;
+  height: 45px;
+  background: #00793A;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  color: #FFFFFF;
+  cursor: pointer;
+  border: none;
 }
 
 @media (max-width: 768px) {
@@ -325,7 +388,7 @@ body {
   }
 
   .header_content {
-    padding: 24px 0 23px 9px;
+    padding: 10px 16px;
   }
 }
 
